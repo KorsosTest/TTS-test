@@ -1,9 +1,6 @@
 services:
   - type: web
-    name: piper-tts
-    env: docker
-    plan: free
-    autoDeploy: true
-    envVars:
-      - key: PORT
-        value: 10000
+    name: piper-tts-api
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.tts_api:app --host 0.0.0.0 --port 10000
