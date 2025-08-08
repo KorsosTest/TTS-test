@@ -1,4 +1,5 @@
 import wave
+import os
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from fastapi.responses import FileResponse
@@ -8,7 +9,10 @@ from piper import PiperVoice
 # DOCS: https://github.com/OHF-Voice/piper1-gpl?tab=readme-ov-file
 
 
-voice = PiperVoice.load("amy.onnx")
+base_dir = os.path.dirname(__file__)
+voice_model_path = os.path.join(base_dir, "amy.onnx")
+
+voice = PiperVoice.load(voice_model_path)
 
 app = FastAPI()
 
