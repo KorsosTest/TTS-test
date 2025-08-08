@@ -9,7 +9,10 @@ from piper import PiperVoice
 # DOCS: https://github.com/OHF-Voice/piper1-gpl?tab=readme-ov-file
 
 
-voice = PiperVoice.load("amy.onnx")
+BASE_DIR = os.path.dirname(__file__)
+MODEL_PATH = os.path.join(BASE_DIR, "amy.onnx")
+
+voice = PiperVoice.load(MODEL_PATH)
 
 app = FastAPI()
 
